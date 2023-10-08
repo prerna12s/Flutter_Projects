@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '/Utili/Routes.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '/About.dart';
@@ -13,6 +14,14 @@ void main() {
   ));
 }
 class Home extends StatelessWidget {
+   launchURL(String url)async{
+     if(await launchUrlString(url)){
+         await launchURL(url);
+     }else{
+       throw'Could not lauch $url';
+     }
+   }
+
 
 
   @override
@@ -28,10 +37,14 @@ class Home extends StatelessWidget {
               /*CIRCLE AVATAR*/
 
                  CircleAvatar(
-                  radius: 175,
+                   backgroundColor: Colors.black.withBlue(80),
+                   radius: 185,
+                   child: CircleAvatar(
+                    radius: 175,
 
-                  backgroundImage: AssetImage('lib/images/sris.jpeg'),
+                    backgroundImage: AssetImage('lib/images/sris.jpeg'),
                 ),
+                 ),
 
               SizedBox(height:11),
               /* NAME */
@@ -78,14 +91,37 @@ class Home extends StatelessWidget {
                     padding: const EdgeInsets.only(left:30),
                     child: Row(
                       children: <Widget>[
-                        Image.asset('lib/images/linkedin.png',
-                          height:70, width:70,),
-                        SizedBox(width:50),
-                        Image.asset('lib/images/github.png',
-                          height:70, width:70,),
-                        SizedBox(width:50),
-                        Image.asset('lib/images/instagram.png',
-                          height:70, width:70,),
+                        IconButton(
+                          icon: Image.asset('lib/images/instagram.png'), // Replace with your image path
+                          onPressed:() {
+                            const url = 'https://www.instagram.com/';
+                            launchURL(url);
+                          },
+                          iconSize:65,
+                          // Your onPressed logic here
+
+                        ),
+                        SizedBox(width:30),
+                        IconButton(
+                          icon: Image.asset('lib/images/github.png'), // Replace with your image path
+                          onPressed:() {
+                         const url = ' https://github.com/prerna12s ';
+                          launchURL(url);},
+                          iconSize:65,
+                          // Your onPressed logic here
+
+                        ),
+                        SizedBox(width:30),
+                        IconButton(
+                          icon: Image.asset('lib/images/linkedin.png'), // Replace with your image path
+                          onPressed:
+                              () {
+                            const url = 'https://www.linkedin.com/in/prerna-tripathi-b54292255/';
+                            launchURL(url);},
+                          iconSize:65,
+                          // Your onPressed logic here
+
+                        ),
                       ],
                     ),
                   ),
@@ -109,12 +145,7 @@ class Home extends StatelessWidget {
                 ),),
               ),
 
-                /*IconButton(
-            icon: Image.asset('assets/custom_icon.png'), // Replace with your image path
-            onPressed: () {
-              // Your onPressed logic here
-            },
-          ),*/
+
 
 
 
