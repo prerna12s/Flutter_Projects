@@ -4,21 +4,25 @@ import 'package:demo/Projects.dart';
 import '/Utili/Routes.dart';
 import '/About.dart';
 import 'package:demo/Home.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: '/',
-    routes: {
-      '/': (context) => Home(),
-      MyRoutes.LoginRoutes:(context) => Projects(),
-      MyRoutes.SignupRoutes:(context)=> About(),
-      '/Projects':(context)=>Projects(),
+  runApp(
+     MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        MyRoutes.ProjectRoutes:(context) => Projects(),
+        MyRoutes.AboutRoutes:(context)=> About(),
+        '/Projects':(context)=>Projects(),
 
 
-    }
-  ));
+      }
+    ),
+  );
     }
 
 
